@@ -1,0 +1,34 @@
+- name: create datadog dashboards
+  hosts: localhost
+  connection: local
+  vars:
+    datadog_api_key: 9775a026f1ca7d1c6c5af9d94d9595a4
+    datadog_app_key: 87ce4a24b5553d2e482ea8a8500e71b8ad4554ff
+
+  tasks:
+    - name: create cpu dashboard
+      datadog_timeboard:
+        api_key: "{{ datadog_api_key }}"
+        app_key: "{{ datadog_app_key }}"
+        state: present
+        src: json/cpu_dashboard.json
+        title: example cpu dashboard
+        description: datadog dashboard created with ansible
+
+    - name: check cpu dashboard idempotency
+      datadog_timeboard:
+        api_key: "{{ datadog_api_key }}"
+        app_key: "{{ datadog_app_key }}"
+        state: present
+        src: json/cpu_dashboard.json
+        title: example cpu dashboard
+        description: datadog dashboard created with ansible
+
+    - name: modify cpu dashboard
+      datadog_timeboard:
+        api_key: "{{ datadog_api_key }}"
+        app_key: "{{ datadog_app_key }}"
+        state: present
+        src: json/cpu_dashboard-modified.json
+        title: example cpu dashboard
+        description: datadog dashboard created with ansible"

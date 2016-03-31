@@ -1,0 +1,22 @@
+[
+   {
+      "definition":{
+         "viz":"timeseries",
+         "requests":[
+            {
+               "q":"avg:system.cpu.user{*}",
+               "type":"line"
+            },
+            {
+               "q":"avg:system.cpu.system{*}",
+               "type":"line"
+            },
+            {
+               "q":"avg:system.cpu.iowait{*}",
+               "type":"line"
+            }
+         ]
+      },
+      "title":"CPU Metrics"
+   }
+]
